@@ -25,6 +25,7 @@ class User extends Authenticatable implements JWTSubject
         'phone',
         'address',
         'role_id',
+        'status',
         'password',
     ];
 
@@ -57,4 +58,16 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+
+    public function invoices()
+    {
+        return $this->hasMany(\App\Models\Invoice::class);
+    }
+
+    public function calls()
+    {
+        return $this->hasMany(\App\Models\Call::class);
+    }
+
+
 }

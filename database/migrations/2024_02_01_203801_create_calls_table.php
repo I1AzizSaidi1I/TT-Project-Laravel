@@ -13,8 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('table_name', function (Blueprint $table) {
+        Schema::create('calls', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('status');
+            $table->text('comment')->nullable();
+            $table->dateTime('date');
             $table->timestamps();
         });
     }
@@ -26,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('table_name');
+        Schema::dropIfExists('calls');
     }
 };

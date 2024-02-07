@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\InvoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,9 @@ Route::controller(ClientController::class)->group(function () {
     Route::get('/clients', 'showClients');
     Route::post('/clients', 'handleCreateClient');
     Route::put('/clients/{user_id}', 'handleUpdateClient');
-    Route::delete('/clients/{user_id}', 'handleDeleteClient');
+    Route::delete('/client/{user_id}', 'handleDeleteClient');
+    Route::get('/clients/calls/{clientId}', 'showCalls');
+    Route::post('/clients/call/save', 'handleSaveCall');
 });
 
 
@@ -40,5 +43,15 @@ Route::controller(EmployeeController::class)->group(function () {
     Route::post('/employe','handleCreateEmployee');
     Route::put('/employe/{id}','handleUpdateEmployee');
     Route::delete('/employe/{id}','handleDeleteEmployee');
+});
+
+
+
+Route::controller(InvoiceController::class)->group(function () {
+    Route::get('/clients/{clientId}/invoices','getClientInvoices');
+    Route::post('/invoices', 'create');
+    Route::get('/invoices/{id}', 'show');
+    Route::put('/invoices/{id}', 'update');
+    Route::delete('/invoices/{id}', 'delete');
 });
 
