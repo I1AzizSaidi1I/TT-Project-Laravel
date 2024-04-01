@@ -30,7 +30,7 @@ Route::controller(ClientController::class)->group(function () {
     Route::get('/clients', 'showClients');
     Route::post('/clients', 'handleCreateClient');
     Route::put('/clients/{user_id}', 'handleUpdateClient');
-    Route::delete('/client/{user_id}', 'handleDeleteClient');
+    Route::delete('/clients/{user_id}', 'handleDeleteClient');
     Route::get('/clients/calls/{clientId}', 'showCalls');
     Route::post('/clients/call/save', 'handleSaveCall');
 });

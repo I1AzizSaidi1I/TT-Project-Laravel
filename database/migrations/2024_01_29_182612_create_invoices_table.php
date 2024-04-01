@@ -12,8 +12,8 @@ class CreateInvoicesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->decimal('total_amount', 10, 2); // Total amount due on the invoice
-            $table->decimal('paid_amount', 10, 2)->default(0); // Amount already paid
+            $table->decimal('total_amount', 10, 2);
+            $table->decimal('paid_amount', 10, 2);
             $table->timestamp('end_time')->nullable();
             $table->timestamps();
         });
